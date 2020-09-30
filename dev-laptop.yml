@@ -1,0 +1,38 @@
+---
+- hosts: localhost
+  become: true
+
+  vars:
+    system_packages:
+      - git
+      - make
+      - build-essential
+      - meld
+      - parallel
+      - nemo
+      - tmux
+
+    snap_packages:
+      - micro
+      - fasd
+      - gnome-calculator
+      - pycharm-community
+      - skype
+      - slack
+      - sublime-text
+      - vlc
+      - zotero-snap
+
+
+
+  tasks:
+    - name: "Install system dependencies"
+      apt:
+        pkg: "{{ system_packages }}"
+        state: present
+        update_cache: true
+
+    - name: "Install snaps"
+      snap:
+        name: "{{ snap_packages }}"
+        state: present

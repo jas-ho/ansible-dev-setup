@@ -11,6 +11,7 @@
       - parallel
       - nemo
       - tmux
+      - fzf
 
     snap_packages:
       - micro

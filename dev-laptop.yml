@@ -23,6 +23,11 @@
       - vlc
       - zotero-snap
 
+    # snap packages requiring classic confinement
+    snap_packages_classic:
+      # code = visual studio code
+      - code
+
 
 
   tasks:
@@ -36,3 +41,13 @@
       snap:
         name: "{{ snap_packages }}"
         state: present
+
+    - name: "Install snaps requiring classic confinement"
+      snap:
+        name: "{{ snap_packages_classic }}"
+        state: present
+        classic: true
+
+    - name: "Install google chrome"
+      apt:
+        deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

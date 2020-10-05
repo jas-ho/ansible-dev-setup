@@ -7,11 +7,19 @@
       - git
       - make
       - build-essential
+      - ssh
+      - htop
+      - net-tools
+      - linux-tools-common
+      - linux-tools-generic
+      - glances
       - meld
       - parallel
       - nemo
       - tmux
       - fzf
+      - jq
+
 
     snap_packages:
       - micro
@@ -23,6 +31,7 @@
       - sublime-text
       - vlc
       - zotero-snap
+      - spotify
 
     # snap packages requiring classic confinement
     snap_packages_classic:

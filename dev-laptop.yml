@@ -9,16 +9,20 @@
       - stow
       - make
       - build-essential
+      - ssh
+      - htop
+      - net-tools
+      - linux-tools-common
+      - linux-tools-generic
+      - glances
       - meld
       - parallel
-      - htop
-      - glances
-      - net-tools
-      - ssh
       - nemo
       - tmux
       - fasd
       - howdoi
+      - fzf
+      - jq
       - micro
       - vlc
       - copyq
@@ -37,7 +41,7 @@
       - zotero-snap
       - signal-desktop
       - dbeaver-ce
-      
+
     # snap packages requiring classic confinement
     snap_packages_classic:
       - sublime-text
@@ -46,7 +50,7 @@
       - slack
       - spotify
       # code = visual studio code
-      - code 
+      - code
 
 
   tasks:
@@ -55,7 +59,7 @@
         update_cache: true
       tags:
         - apt
-  
+
     - name: "Install system packages"
       apt:
         pkg: "{{ item }}"
@@ -85,11 +89,11 @@
     - name: "Install google chrome"
       apt:
         deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        
-    # - name: "Install fzf" 
+
+    # - name: "Install fzf"
     # todo:
     # - download using equivalent to git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf, then ~/.fzf/install
-    
+
     # TODO:
     # commit these changes and push
 

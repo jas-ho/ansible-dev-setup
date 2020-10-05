@@ -3,7 +3,7 @@
   become: true
 
   vars:
-    system_packages:
+    system_packages:  # todo: split into different groups
       - snapd
       - git
       - stow
@@ -14,18 +14,29 @@
       - htop
       - glances
       - net-tools
+      - ssh
       - nemo
       - tmux
       - fasd
+      - howdoi
       - micro
-      - gnome-calculator
       - vlc
       - copyq
       - ripgrep
+      - gnome-tweak-tool
+      - gnome-calculator
+      - gnome-shell-pomodoro
+      - libreoffice
+      - libreoffice-gnome
+      - postgresql
+      - postgresql-contrib
+      - libpq-dev
+
 
     snap_packages:
       - zotero-snap
       - signal-desktop
+      - dbeaver-ce
       
     # snap packages requiring classic confinement
     snap_packages_classic:
@@ -75,13 +86,19 @@
       apt:
         deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         
-    - name: "Install fzf" 
+    # - name: "Install fzf" 
     # todo:
     # - download using equivalent to git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf, then ~/.fzf/install
     
     # TODO:
     # commit these changes and push
 
-    - name: "Install anaconda"
+    # - name: "Install anaconda"
 
+    # - name: "Clone and install dotfiles"
 
+    - name: "Start ssh service to allow remote login"
+      command: systemctl enable --now ssh && systemctl status ssh
+      tags:
+        - ssh
+      # use ssh-copy-id user@remotemachine to allow passwordless login from localhost to remotemachine (https://www.linuxbabe.com/linux-server/setup-passwordless-ssh-login)
